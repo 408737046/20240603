@@ -8,6 +8,11 @@ https://www.tensorflow.org/hub/tutorials/movenet
 let video, bodypose, pose, keypoint, detector;
 let poses = [];
 
+var carImg
+function preload(){
+  carImg = loadImage("pic.gif");
+}
+
 async function init() {
   const detectorConfig = {
     modelType: poseDetection.movenet.modelType.MULTIPOSE_LIGHTNING,
@@ -50,7 +55,7 @@ function draw() {
   // flip horizontal
   cam = get();
   translate(cam.width, 0);
-  scale(-1, 1);
+  scale(-1, 1);     //反向(攝影機鏡像)
   image(cam, 0, 0);
 }
 
@@ -58,6 +63,32 @@ function drawSkeleton() {
   // Draw all the tracked landmark points
   for (let i = 0; i < poses.length; i++) {
     pose = poses[i];
+    
+
+    //學號及姓名
+    partA = pose.keypoints[0];
+    if (partA.score > 0.1){
+      push()
+       textSize(40)
+       scale(-1,1)
+       text("408737046,黃舒涵",partA.x-width,partA.y-250)
+      pop()
+    }
+    
+    //left ear
+    partA = pose.keypoints[3]
+    if(partA.score > 0.1)
+    {
+      image(carImg,partA.x-25,partA.y-25)
+    }
+    
+    //right ear
+    partA = pose.keypoints[4]
+    if(partA.score > 0.1)
+    {
+      image(carImg,partA.x-25,partA.y-25,50,50)
+    }
+
     // shoulder to wrist
     for (j = 5; j < 9; j++) {
       if (pose.keypoints[j].score > 0.1 && pose.keypoints[j + 2].score > 0.1) {
@@ -71,7 +102,10 @@ function drawSkeleton() {
     partB = pose.keypoints[6];
     if (partA.score > 0.1 && partB.score > 0.1) {
       line(partA.x, partA.y, partB.x, partB.y);
-      
+      push()
+        image(carImg,partA.x-75, partA.y-75,150,150)
+        image(carImg,partB.x-75, partB.y-75,150,150)
+      pop()
     }
     // hip to hip
     partA = pose.keypoints[11];
