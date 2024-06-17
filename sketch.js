@@ -80,9 +80,6 @@ function drawSkeleton() {
     if(partA.score > 0.1)
     {
       image(carImg,partA.x-25,partA.y-25)
-      push()
-      translate(50, 50);
-      pop()
     }
     
     //right ear
