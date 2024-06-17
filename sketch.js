@@ -74,21 +74,23 @@ function drawSkeleton() {
        text("408737046,黃舒涵",partA.x-width,partA.y-250)
       pop()
     }
-    
+
     //left ear
     partA = pose.keypoints[3]
     if(partA.score > 0.1)
     {
-     dx = sin(frameCount/10)*100
-     dy = 0
-     image(carImg,partA.x+dx,partA.y+dy)
+      dx = sin(frameCount/10)*100
+      dy = 0
+      image(carImg,partA.x+dx,partA.y+dy)
     }
     
     //right ear
     partA = pose.keypoints[4]
     if(partA.score > 0.1)
     {
-      image(carImg,partA.x-25,partA.y-25,25,25)
+      dx = sin(frameCount/10)*100
+      dy = 0
+      image(carImg,partA.x+dx,partA.y+dy)
     }
 
     // shoulder to wrist
@@ -104,9 +106,11 @@ function drawSkeleton() {
     partB = pose.keypoints[6];
     if (partA.score > 0.1 && partB.score > 0.1) {
       line(partA.x, partA.y, partB.x, partB.y);
+      dx =random(15,-15)  //dx為x軸移動位置(左右移動)，介於-5,5，為正往右為負往左
+      dy =0
       push()
-        image(carImg,partA.x-75, partA.y-75,150,150)
-        image(carImg,partB.x-75, partB.y-75,150,150)
+        image(carImg,partA.x+dx, partA.y+dy,150,150)
+        image(carImg,partB.x+dx, partB.y+dy,150,150)
       pop()
     }
     // hip to hip
