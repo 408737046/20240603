@@ -79,14 +79,14 @@ function drawSkeleton() {
     partA = pose.keypoints[3]
     if(partA.score > 0.1)
     {
-      image(carImg,partA.x-25,partA.y-25)
+      image(carImg,partA.x-25,partA.y-25,25,25)
     }
     
     //right ear
     partA = pose.keypoints[4]
     if(partA.score > 0.1)
     {
-      image(carImg,partA.x-25,partA.y-25)
+      image(carImg,partA.x-25,partA.y-25,25,25)
     }
 
     // shoulder to wrist
