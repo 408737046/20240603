@@ -66,14 +66,14 @@ function drawSkeleton() {
     
 
     //學號及姓名
-   // partA = pose.keypoints[0];
-   // if (partA.score > 0.1){
-  //    push()
-  //     textSize(40)
-  //     scale(-1,1)
-  //     text("408737046,黃舒涵",partA.x-width,partA.y-250)
-  //    pop()
-  //  }
+    partA = pose.keypoints[0];
+    if (partA.score > 0.1){
+      push()
+       textSize(40)
+       scale(-1,1)
+       text("408737046,黃舒涵",partA.x-width,partA.y-250)
+      pop()
+    }
     
     //left ear
     partA = pose.keypoints[3]
@@ -98,15 +98,15 @@ function drawSkeleton() {
       }
     }
     // shoulder to shoulder
-   // partA = pose.keypoints[5];
-   // partB = pose.keypoints[6];
-   // if (partA.score > 0.1 && partB.score > 0.1) {
-   //   line(partA.x, partA.y, partB.x, partB.y);
-   //   push()
-  //      image(carImg,partA.x-75, partA.y-75,150,150)
-   //     image(carImg,partB.x-75, partB.y-75,150,150)
-    //  pop()
-  //  }
+    partA = pose.keypoints[5];
+    partB = pose.keypoints[6];
+    if (partA.score > 0.1 && partB.score > 0.1) {
+      line(partA.x, partA.y, partB.x, partB.y);
+      push()
+        image(carImg,partA.x-75, partA.y-75,150,150)
+        image(carImg,partB.x-75, partB.y-75,150,150)
+      pop()
+    }
     // hip to hip
     partA = pose.keypoints[11];
     partB = pose.keypoints[12];
