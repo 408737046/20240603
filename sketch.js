@@ -79,7 +79,9 @@ function drawSkeleton() {
     partA = pose.keypoints[3]
     if(partA.score > 0.1)
     {
-      image(carImg,partA.x-25,partA.y-25)
+     dx = sin(frameCount/10)*100
+     dy = 0
+     image(carImg,partA.x+dx,partA.y+dy)
     }
     
     //right ear
